@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block contents %}
+
+  <body>
+
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">앨범</h1>
+          <p class="lead text-muted">과제를 진행하며 느낀 희노애락</p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+
+            <!-- 스태틱파일 -->
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img src="{% static 'frog.jpg' %}", height="300", alt="개구리"> 
+                <div class="card-body">
+                  <p class="card-text">과제를 접한 모습</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 미디어파일 -->
+            {% for portfolio in portfolios.all %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <img src="{{ portfolio.image.url }}", height="300", alt=""> 
+                  <div class="card-body">
+                    <p class="card-text">과제를 완료한 모습</p>
+                    <!-- <p class="card-text">{{ portfolio.description }}</p> -->
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+
+  </body>
+
+  {% endblock %}
